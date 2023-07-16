@@ -62,7 +62,7 @@ def get_config(args):
 
 def get_tokenizer(args):
     tokenizer = AutoTokenizer.from_pretrained(
-        args.model.name,
+        "EleutherAI/pythia-70m",
         use_fast=True
     )
     tokenizer.model_max_length = int(1e9)
