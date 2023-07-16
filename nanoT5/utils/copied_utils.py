@@ -363,7 +363,8 @@ def tokenize_function(examples, tokenizer, in_length):
 
     input_ids = tokenizer_out["input_ids"]
 
-    concatenated_ids = np.concatenate(input_ids)
+    # have to manually add eos token for GPT NeoX tokenizer
+    concatenated_ids = np.concatenate([seq + [tokenizer.eos_token_id] for seq in input_ids])
 
     total_length = concatenated_ids.shape[0]
     total_length = (total_length // in_length) * in_length
