@@ -66,6 +66,7 @@ def get_tokenizer(args):
         use_fast=True
     )
     tokenizer.model_max_length = int(1e9)
+    tokenizer.add_special_tokens({"pad_token": "<|pad|>"})
 
     return tokenizer
 
