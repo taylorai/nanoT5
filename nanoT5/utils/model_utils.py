@@ -88,7 +88,7 @@ def load_dataset_splits(args):
     if args.mode == 'pt':
         dataset = datasets.load_dataset(
             'EleutherAI/pile',
-            'en',
+            'all',
             streaming=True,
         )
 
