@@ -58,6 +58,7 @@ def get_config(args):
             setattr(config, k, v)
             
     config.vocab_size = 50432
+    config.tie_word_embeddings=False
     return config
 
 
