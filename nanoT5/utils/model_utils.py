@@ -39,6 +39,7 @@ def get_model(args, config):
 
     with open_dict(args):
         args.n_all_param = sum([p.nelement() for p in model.parameters()])
+        print("Params:", args.n_all_param / 1e6, "million")
     return model
 
 
