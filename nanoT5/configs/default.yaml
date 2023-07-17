@@ -13,14 +13,14 @@ seed: 2137
 
 model:
   klass: local_t5
-  name: 'google/t5-v1_1-base'
+  name: 'google/t5-efficient-tiny-nl8'
   overwrite:
     dropout_rate: 0.0
   add_config:
     is_bf16: false
   checkpoint_path: ''
   random_init: true
-  compile: false # Pytorch 2.0
+  compile: true # Pytorch 2.0
 
 data:
   input_length: 512
