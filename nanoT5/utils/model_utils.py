@@ -19,6 +19,7 @@ from .t5_model import MyT5
 
 
 def get_model(args, config):
+    config.vocab_size = 50432
     klass = {
         'hf_t5': T5ForConditionalGeneration,
         'local_t5': MyT5,
@@ -30,6 +31,7 @@ def get_model(args, config):
     elif args.model.random_init:
         model = klass(config)
     else:
+        assert False, "You just resized the vocabulary, you can't load HuggingFace weights."
         assert klass == T5ForConditionalGeneration, 'To load HFs weights you need to use HF model'
         model = klass.from_pretrained(
             args.model.name,
