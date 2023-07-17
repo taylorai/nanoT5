@@ -38,7 +38,7 @@ def get_model(args, config):
 
     with open_dict(args):
         args.n_all_param = sum([p.nelement() for p in model.parameters()])
-    
+    if config
     return model
 
 
@@ -66,8 +66,18 @@ def get_tokenizer(args):
         use_fast=True
     )
     tokenizer.model_max_length = int(1e9)
-    tokenizer.add_special_tokens({"pad_token": "<|pad|>"})
+    tokenizer.add_special_tokens({
+        "unk_token": "<|unk|>",
+        "pad_token": "<|pad|>"
+    })
+    num_extra_tokens = 256 * (len(tokenizer) // 256 + 1) - len(tokenizer)
 
+    neox_tokenizer.add_special_tokens({
+        "additional_special_tokens": [
+            f"<|extra_id_{i}|>" for i in range(num_extra_tokens)
+        ]
+    })
+    assert len(tokenizer) == 50432, "Tokenizer does not have expected vocabulary size."
     return tokenizer
 
 
