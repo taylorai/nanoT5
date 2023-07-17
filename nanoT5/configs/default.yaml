@@ -20,7 +20,7 @@ model:
     is_bf16: false
   checkpoint_path: ''
   random_init: true
-  compile: true # Pytorch 2.0
+  compile: false # it broke even with Pytorch 2.0
 
 data:
   input_length: 512
