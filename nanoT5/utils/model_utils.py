@@ -19,7 +19,6 @@ from .t5_model import MyT5
 
 
 def get_model(args, config):
-    config.vocab_size = 50432
     klass = {
         'hf_t5': T5ForConditionalGeneration,
         'local_t5': MyT5,
@@ -58,7 +57,8 @@ def get_config(args):
         for k, v in args.model.add_config.items():
             assert not hasattr(config, k), f'config already has attribute {k}'
             setattr(config, k, v)
-
+            
+    config.vocab_size = 50432
     return config
 
 
