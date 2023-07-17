@@ -56,9 +56,10 @@ def get_config(args):
         for k, v in args.model.add_config.items():
             assert not hasattr(config, k), f'config already has attribute {k}'
             setattr(config, k, v)
-            
+    config.d_ff = int(((config.d_model * 8 / 3) // 128) * 128)
+    config.is_gated_act = True
     config.vocab_size = 50432
-    config.tie_word_embeddings=False
+    config.tie_word_embeddings = False
     return config
 
 
