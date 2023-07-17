@@ -75,7 +75,7 @@ def get_tokenizer(args):
     })
     num_extra_tokens = 256 * (len(tokenizer) // 256 + 1) - len(tokenizer)
 
-    neox_tokenizer.add_special_tokens({
+    tokenizer.add_special_tokens({
         "additional_special_tokens": [
             f"<|extra_id_{i}|>" for i in range(num_extra_tokens)
         ]
